@@ -22,14 +22,11 @@ input.onButtonPressed(Button.B, function () {
         movePlayer(1)
     }
 })
-input.onGesture(Gesture.Shake, function () {
-    control.reset()
-})
 function sendEnemy (sprite: game.LedSprite, speed: number) {
     music.play(music.builtinPlayableSoundEffect(soundExpression.hello), music.PlaybackMode.UntilDone)
     for (let index = 0; index < 4; index++) {
-        basic.pause(speed)
         sprite.change(LedSpriteProperty.Y, 1)
+        basic.pause(speed)
     }
     if (sprite.isTouching(player)) {
         music.stopAllSounds()
@@ -45,7 +42,7 @@ function movePlayer (step: number) {
     music.play(music.createSoundExpression(WaveShape.Square, 1600, 1, 255, 0, 300, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
     player.change(LedSpriteProperty.X, step)
 }
-loops.everyInterval(randint(500, 1000), function () {
+loops.everyInterval(randint(100, 200), function () {
     if (game.isRunning()) {
         sendEnemy(game.createSprite(randint(0, 5), 0), randint(1, 5) * 100)
     }
