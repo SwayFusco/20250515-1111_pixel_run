@@ -1,4 +1,10 @@
 let player: game.LedSprite = null
+function makeEnemies () {
+    for (let index = 0; index <= 4; index++) {
+        let enemies: game.LedSprite[] = []
+        enemies.push(game.createSprite(index, 0))
+    }
+}
 function startGame () {
     music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Prelude), music.PlaybackMode.LoopingInBackground)
     for (let index = 0; index <= 2; index++) {
